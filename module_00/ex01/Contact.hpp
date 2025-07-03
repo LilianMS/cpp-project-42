@@ -20,12 +20,9 @@ class Contact {
 		const std::string &getNickname() const;
 		const std::string &getPhoneNumber() const;
 		const std::string &getDarkestSecret() const;
-		
-		void setFirstName(const std::string &firstName);
-		void setLastName(const std::string &lastName);
-		void setNickname(const std::string &nickname);
-		void setPhoneNumber(const std::string &phoneNumber);
-		void setDarkestSecret(const std::string &darkestSecret);
+		std::string	getInput(std::string prompt);
+		void		displayContactInfo(void) const;
+		void		setContactInfo(void);
 		
 		private:
 			std::string firstName;

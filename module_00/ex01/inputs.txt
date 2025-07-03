@@ -1,0 +1,59 @@
+ADD
+José Felipe
+Stieven
+josfelip
+012345678910
+*********
+ADD
+José Felipe
+Stieven
+josfelip
+012345678910
+*********
+ADD
+José Felipe
+Stieven
+josfelip
+012345678910
+*********
+ADD
+José Felipe
+Stieven
+josfelip
+012345678910
+*********
+ADD
+José Felipe
+Stieven
+josfelip
+012345678910
+*********
+ADD
+José Felipe
+Stieven
+josfelip
+012345678910
+*********
+ADD
+José Felipe
+Stieven
+josfelip
+012345678910
+*********
+ADD
+José Felipe
+Stieven
+josfelip
+012345678910
+*********
+ADD
+Foo
+Bar
+foobar
+109876543210
+*********
+SEARCH
+0
+SEARCH
+1
+EXIT

@@ -3,8 +3,8 @@ NAME = phonebook
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp PhoneBook.cpp Contact.cpp \
-		Utils.cpp
+SRCS = main.cpp PhoneBook.cpp Contact.cpp
+
 OBJS = $(SRCS:.cpp=.o)
 
 # Colors
@@ -33,6 +33,6 @@ re: fclean all
 
 test:
 	@echo -e "$(YELLOW)🔧 Running tests...$(RESET)"
-	./test.sh
+	valgrind -s --track-origins=yes ./${NAME} < inputs.txt
 
 .PHONY: all clean fclean re test

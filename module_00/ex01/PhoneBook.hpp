@@ -1,6 +1,5 @@
-
-#ifndef PhoneBook_HPP
-#define PhoneBook_HPP
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 
 #include "Contact.hpp"
 #include <iostream>
@@ -24,6 +23,4 @@ class PhoneBook {
 		std::string	truncateData(std::string data) const;
 };
 
-
-
-
+#endif // PHONEBOOK_HPP

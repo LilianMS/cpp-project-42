@@ -4,7 +4,8 @@
 #include <string>
 #include <iomanip>
 
-PhoneBook::PhoneBook() : totalContacts(0), currentIndex(0){}
+
+PhoneBook::PhoneBook() : currentIndex(0), totalContacts(0){}
 PhoneBook::~PhoneBook() {}
 
 int	PhoneBook::addContact()
@@ -33,7 +34,7 @@ void PhoneBook::searchContact() const
 	std::getline(std::cin, str);
     if (str.length() == 1 && str[0] >= '0' && str[0] <= '9')
 	{
-		index = std::stoi(str.c_str());
+		index = str[0] - '0';
 		if (index < totalContacts && index >= 0)
 		{
 			contacts[index].displayContactInfo();
