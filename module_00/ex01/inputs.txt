@@ -47,6 +47,24 @@ josfelip
 012345678910
 *********
 ADD
+José Felipe
+Stieven
+josfelip
+012345678910
+*********
+ADD
+José
+Stiev
+josfelip
+012345678910
+*********
+ADD
+José F
+Stiv
+josfelip
+012345678910
+*********
+ADD
 Foo
 Bar
 foobar

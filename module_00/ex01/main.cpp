@@ -1,28 +1,40 @@
-
 #include "PhoneBook.hpp"
 #include <iostream>
+#include <cstdlib>
+#include <csignal>
+
+void handleSigint(int signum) {
+	(void)signum;
+	std::cout << "\n🛑 Program interrupted with Ctrl+C. Goodbye!" << std::endl;
+	std::exit(0);
+}
 
 int main() {
+	std::signal(SIGINT, handleSigint);
+
 	PhoneBook phoneBook;
 	std::string command;
 
+	std::cout << "📞 Welcome to My Awesome PhoneBook!\n";
+
 	while (true) {
-		std::cout << "Please enter a command (ADD, SEARCH or EXIT): ";
+		std::cout << "\nEnter command (ADD, SEARCH, EXIT): ";
+
 		if (!std::getline(std::cin, command)) {
-			if (std::cin.eof())
-				std::cout << "\nEOF detected. Exiting program." << std::endl;
-			break;
+			std::cout << "\n👋 EOF received. Exiting program." << std::endl;
+			break ;
 		}
-		if (command == "ADD") {
+
+		if (command == "ADD")
 			phoneBook.addContact();
-		} else if (command == "SEARCH") {
-			phoneBook.searchContact();
-		} else if (command == "EXIT") {
-			std::cout << "Goodbye!" << std::endl;
-			break;
-		} else {
-			std::cout << "Invalid command! Please enter ADD, SEARCH or EXIT." << std::endl;
-		}
+		else if (command == "SEARCH")
+			phoneBook.searchContacts();
+		else if (command == "EXIT")
+			break ;
+		else
+			std::cout << "❓ Unknown command.\n";
 	}
+
+	std::cout << "👋 Bye!\n";
 	return (0);
 }

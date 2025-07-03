@@ -32,7 +32,6 @@ fclean: clean
 re: fclean all
 
 test:
-	@echo -e "$(YELLOW)🔧 Running tests...$(RESET)"
-	valgrind -s --track-origins=yes ./${NAME} < inputs.txt
+	./test.sh
 
 .PHONY: all clean fclean re test

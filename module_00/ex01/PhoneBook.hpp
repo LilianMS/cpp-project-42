@@ -1,26 +1,25 @@
 #ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
-#include "Contact.hpp"
-#include <iostream>
+# include "Contact.hpp"
+# include <string>
 
 class PhoneBook {
-	public:
-		PhoneBook();
-		~PhoneBook();
-		
-		int		addContact();
-		void	searchContact() const;
+public:
+    PhoneBook();
+    ~PhoneBook();
 
-	private:
-		Contact		contacts[8];
-		int			currentIndex;
-		int			totalContacts;
-		
-		void		displayContactTable() const;
-		void		insertFooter() const;
-		void		insertHeader() const;
-		std::string	truncateData(std::string data) const;
+    void addContact();
+    void searchContacts() const;
+
+private:
+    Contact _contacts[8];
+    int     _nextIndex;
+    int     _size;
+
+    void printTable() const;
+    void printContact(int index) const;
+    std::string promptInput(const std::string &prompt) const;
 };
 
-#endif // PHONEBOOK_HPP
+#endif

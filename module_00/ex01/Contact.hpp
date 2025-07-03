@@ -1,36 +1,27 @@
-
 #ifndef CONTACT_HPP
-#define CONTACT_HPP
+# define CONTACT_HPP
 
-#include <string>
-#include <iostream>
+# include <string>
 
 class Contact {
-	public:
-		Contact();
-		Contact(const std::string &firstName,
-				const std::string &lastName,
-				const std::string &nickname,
-				const std::string &phoneNumber,
-				const std::string &darkestSecret);
-		~Contact();
+public:
+    Contact();
+    ~Contact();
 
-		const std::string &getFirstName() const;
-		const std::string &getLastName() const;
-		const std::string &getNickname() const;
-		const std::string &getPhoneNumber() const;
-		const std::string &getDarkestSecret() const;
-		std::string	getInput(std::string prompt);
-		void		displayContactInfo(void) const;
-		void		setContactInfo(void);
-		
-		private:
-			std::string firstName;
-			std::string lastName;
-			std::string nickname;
-			std::string phoneNumber;
-			std::string darkestSecret;
+    void setField(int fieldIndex, const std::string &value);
+    std::string getField(int fieldIndex) const;
+
+    std::string getSummaryField(int fieldIndex) const;
+    bool isComplete() const;
+
+private:
+    std::string _fields[5];
+
+    static const int FIRST_NAME = 0;
+    static const int LAST_NAME = 1;
+    static const int NICKNAME = 2;
+    static const int PHONE_NUMBER = 3;
+    static const int DARKEST_SECRET = 4;
 };
-
 
 #endif
