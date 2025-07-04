@@ -11,7 +11,7 @@ public:
     ~Zombie();
 
     void setName(std::string name);
-    void announce() const;
+    void announce(void) const;
 
 private:
     std::string _name;
