@@ -7,29 +7,29 @@ RESET="\033[0m"
 EXEC="valgrind ./phonebook"
 BUILD_CMD="make re"
 
-echo -e "${YELLOW}🔧 Compilando o projeto...${RESET}"
+echo -e "${YELLOW}🔧 Building the project...${RESET}"
 $BUILD_CMD
 
 if [ ! -f $EXEC ]; then
-    echo -e "${YELLOW}❌ Executável não encontrado.${RESET}"
+    echo -e "${YELLOW}❌ Executable not found.${RESET}"
     exit 1
 fi
 
-echo -e "${GREEN}✅ Executável compilado com sucesso.${RESET}"
+echo -e "${GREEN}✅ Executable built successfully.${RESET}"
 
-# Simular entrada com comandos via printf e redirecionar para o executável
-echo -e "\n${GREEN}🔹 Teste 1: Comando inválido, ADD, SEARCH e EXIT com índice válido${RESET}"
-printf "TESTE\nADD\nJoão\nSilva\nJSilva\n11999999999\nAdora lasanha\nSEARCH\n0\nEXIT\n" | $EXEC
+# Simulate input with commands via printf and redirect to the executable
+echo -e "\n${GREEN}🔹 Test 1: Invalid command, ADD, SEARCH and EXIT with valid index${RESET}"
+printf "TEST\nADD\nJohn\nSmith\nJSmith\n11999999999\nLoves lasagna\nSEARCH\n0\nEXIT\n" | $EXEC
 
-echo -e "\n${GREEN}🔹 Teste 2: SEARCH com índice inválido${RESET}"
-printf "ADD\nAna\nLima\nAninha\n21988888888\nTem medo de palhaço\nSEARCH\n9\nEXIT\n" | $EXEC
+echo -e "\n${GREEN}🔹 Test 2: SEARCH with invalid index${RESET}"
+printf "ADD\nAnna\nLima\nAnnie\n21988888888\nAfraid of clowns\nSEARCH\n9\nEXIT\n" | $EXEC
 
-echo -e "\n${GREEN}🔹 Teste 3: Apenas comando EXIT${RESET}"
+echo -e "\n${GREEN}🔹 Test 3: Only EXIT command${RESET}"
 printf "EXIT\n" | $EXEC
 
-echo -e "\n${GREEN}🔹 Teste 4: Preenchimento automático dos 8 contatos e substituição${RESET}"
+echo -e "\n${GREEN}🔹 Test 4: Automatically fill 8 contacts and replace${RESET}"
 for i in {1..9}; do
-    printf "ADD\nNome$i\nSobrenome$i\nNick$i\nTelefone$i\nSegredo$i\n" >> input.txt
+    printf "ADD\nName$i\nSurname$i\nNick$i\nPhone$i\nSecret$i\n" >> input.txt
 done
 echo "SEARCH" >> input.txt
 echo "7" >> input.txt
@@ -37,4 +37,4 @@ echo "EXIT" >> input.txt
 $EXEC < input.txt
 rm input.txt
 
-echo -e "\n${YELLOW}✔️ Testes concluídos.${RESET}"
+echo -e "\n${YELLOW}✔️ Tests completed.${RESET}"
