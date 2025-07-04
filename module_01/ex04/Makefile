@@ -1,9 +1,12 @@
-NAME = zombieHorde
+NAME = 
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp Zombie.cpp zombieHorde.cpp
+SRCS = main.cpp \
+	   Weapon.cpp \
+	   HumanA.cpp \
+	   HumanB.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -16,7 +19,7 @@ MAGENTA = \033[1;35m
 RESET = \033[0m
 
 all: $(NAME)
-	@echo "Program created:  $(GREEN) 🧟🧟🧟 ./$(NAME) $(RESET)"
+	@echo "Program created:  $(GREEN) ./$(NAME) $(RESET)"
 
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^

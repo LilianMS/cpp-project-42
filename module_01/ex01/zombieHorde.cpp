@@ -15,8 +15,8 @@ Zombie* zombieHorde(int N, std::string name) {
         horde[i].setName(oss.str());
     }
 
-    return horde;
-}
+    return (horde);
+}   
 
 
 // Zombie* zombieHorde(int N, std::string name) {
