@@ -40,14 +40,10 @@ void Harl::complain(std::string level) {
 			return;
 	}
 
-	debug_label:
-		debug();
-	info_label:
-		info();
-	warning_label:
-		warning();
-	error_label:
-		error();
+	debug_label: debug();
+	info_label: info();
+	warning_label: warning();
+	error_label: error();
 }
 
 
