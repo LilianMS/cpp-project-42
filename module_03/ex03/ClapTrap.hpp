@@ -1,5 +1,4 @@
-#ifndef CLAPTRAP_HPP
-# define CLAPTRAP_HPP
+#pragma once
 
 # include <string>
 # include <iostream>
@@ -23,5 +22,3 @@ class ClapTrap {
 		unsigned int	_energyPoints;
 		unsigned int	_attackDamage;
 };
-
-#endif

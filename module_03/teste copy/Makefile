@@ -1,4 +1,4 @@
-NAME = diamondtrap
+NAME = teste
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow
@@ -7,7 +7,7 @@ SRCS = main.cpp \
 		ClapTrap.cpp \
 		ScavTrap.cpp \
 		FragTrap.cpp \
-		DiamondTrap.cpp
+		DiamondTrap.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -22,7 +22,7 @@ RESET = \033[0m
 COLORS = colors.hpp
 
 all: $(COLORS) $(NAME)
-	@echo "Program created:  $(GREEN)💎 ./$(NAME) $(RESET)"
+	@echo "Program created:  $(GREEN)🤖 ./$(NAME) $(RESET)"
 
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
@@ -44,7 +44,7 @@ test: clear re
 
 clear:
 	clear
-	@echo "$(BLUE)Clearing terminal...$(RESET)"
+	@echo "$(MAGENTA)Clearing terminal...$(RESET)"
 
 COLORS = colors.hpp
 
@@ -62,7 +62,6 @@ $(COLORS):
 	@echo '# define MAGENTA "\033[35m"' >> $(COLORS)
 	@echo '# define CYAN    "\033[36m"' >> $(COLORS)
 	@echo '# define WHITE   "\033[37m"' >> $(COLORS)
-	@echo '# define PURPLE  "\033[95m"' >> $(COLORS)
 	@echo "" >> $(COLORS)
 	@echo '# define BOLD    "\033[1m"' >> $(COLORS)
 	@echo '# define UNDER   "\033[4m"' >> $(COLORS)
