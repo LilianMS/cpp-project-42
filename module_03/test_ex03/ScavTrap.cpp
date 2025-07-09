@@ -60,3 +60,13 @@ void ScavTrap::guardGate()
 	std::cout << "ScavTrap " << getName()
 			<< " is now in guard mode." << std::endl;
 }
+
+unsigned int ScavTrap::getEnergyPoints() const
+{
+	return (_energyPoints);
+}
+
+void ScavTrap::setEnergyPoints(unsigned int ep)
+{
+	_energyPoints = ep;
+}

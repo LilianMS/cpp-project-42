@@ -14,11 +14,13 @@ class DiamondTrap : public ScavTrap, public FragTrap
 	~DiamondTrap();
 
 	const std::string&	getName() const;
+	void	setEnergyPoints(unsigned int ep);
 	
 	void whoAmI();
 
 	private:
 		std::string _name;
+		// unsigned int _energyPoints;
 };
 
 #endif

@@ -11,8 +11,14 @@ class ScavTrap : public virtual ClapTrap {
 		ScavTrap& operator=(const ScavTrap& other);
 		virtual ~ScavTrap();
 
-		void attack(const std::string& target);
-		void guardGate();
+		void			attack(const std::string& target);
+		void			guardGate();
+
+		void			setEnergyPoints(unsigned int ep);
+		unsigned int	getEnergyPoints() const;
+
+	private:
+		unsigned int	_energyPoints;
 };
 
 #endif

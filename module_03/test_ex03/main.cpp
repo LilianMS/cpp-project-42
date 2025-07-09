@@ -13,11 +13,12 @@ int main() {
 	std::cout << YELLOW << "\n⚔️ Special attack:\n" << RESET;
 	dia.attack("Dangerous_Target");
 
+	std::cout << RED << "\n💥 Taking damage:\n" << RESET;
+	dia.takeDamage(50);
+	
 	std::cout << GREEN << "\n🔧 Repairing:\n" << RESET;
 	dia.beRepaired(25);
 
-	std::cout << RED << "\n💥 Taking damage:\n" << RESET;
-	dia.takeDamage(50);
 
 std::cout << "\nUpdate values:\n";
 	std::cout << "Name: " << dia.getName() << "\n";

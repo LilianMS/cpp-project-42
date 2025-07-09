@@ -7,7 +7,6 @@ DiamondTrap::DiamondTrap()
 , FragTrap("Default")
 , _name("Default")
 {
-	setEnergyPoints(50);
 	std::cout << "DiamondTrap default constructor called" << std::endl;
 }
 
@@ -17,7 +16,6 @@ DiamondTrap::DiamondTrap(const std::string& name)
 , FragTrap(name)
 , _name(name)
 {
-	setEnergyPoints(50);
 	std::cout << "DiamondTrap constructor called for " << _name << std::endl;
 }
 
@@ -37,7 +35,7 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap& other)
 		ClapTrap::operator=(other);
 		_name = other._name;
 	}
-	return *this;
+	return (*this);
 }
 
 DiamondTrap::~DiamondTrap()
@@ -57,3 +55,8 @@ const std::string& DiamondTrap::getName() const
 {
 	return (_name);
 }
+
+// void DiamondTrap::setEnergyPoints(unsigned int ep)
+// {
+// 	_energyPoints = ep;
+// }
