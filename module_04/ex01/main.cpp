@@ -47,5 +47,5 @@ int main()
 	std::cout << "Original idea[0]: " << YELLOW << original.getBrain()->getIdea(0) << RESET << std::endl;
 	std::cout << "Copy idea[0]:     " << YELLOW << copy.getBrain()->getIdea(0) << RESET << std::endl;
 
-	return 0;
+	return (0);
 }
