@@ -10,7 +10,7 @@ int main()
 	biblioteca->learnMateria(new Cure());
 
 	ICharacter *player = new Character("🧪 StressBot");
-	ICharacter *dummy = new Character("🧍‍♂️ Dummy");
+	ICharacter *dummy = new Character("🧍 Dummy");
 
 	const int totalCasts = MAX;
 	const int unequipEvery = 2;

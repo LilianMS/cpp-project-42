@@ -2,7 +2,7 @@
 
 int main()
 {
-	std::cout << BLUE << "\n🧙‍♂️  Bem-vindo ao mundo do MateriaCraft! ✨\n"
+	std::cout << BLUE << "\n✨ Bem-vindo ao mundo do MateriaCraft! ✨\n"
 			  << RESET;
 
 	IMateriaSource *biblioteca = new MateriaSource();
