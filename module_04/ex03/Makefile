@@ -1,14 +1,17 @@
+
 NAME = MateriaCraft
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Wno-shadow
+INCLUDES = -Iincludes
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Wno-shadow $(INCLUDES)
 
-SRCS = main.cpp \
-		AMateria.cpp \
-		Ice.cpp \
-		Cure.cpp \
-		Character.cpp \
-		MateriaSource.cpp \
+SRCS = src/main.cpp \
+		src/AMateria.cpp \
+		src/Ice.cpp \
+		src/Cure.cpp \
+		src/Character.cpp \
+		src/MateriaSource.cpp \
+		src/Tnt.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -46,3 +49,5 @@ clear:
 	@echo "$(MAGENTA)Clearing terminal...$(RESET)"
 
 .PHONY: all clean fclean re test
+
+

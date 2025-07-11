@@ -54,7 +54,7 @@ void MateriaSource::learnMateria(AMateria *m)
 			return ;
 		}
 	}
-	std::cout << "⚠️ MateriaSource full. Cannot learn more." << std::endl;
+	std::cout << "⚠️  MateriaSource full. Cannot learn more." << std::endl;
 }
 
 AMateria *MateriaSource::createMateria(std::string const &type)
@@ -67,6 +67,6 @@ AMateria *MateriaSource::createMateria(std::string const &type)
 			return (_slots[i]->clone());
 		}
 	}
-	std::cout << "⚠️ Materia not found: " << type << std::endl;
+	std::cout << "⚠️  Materia not found: " << type << std::endl;
 	return (NULL);
 }

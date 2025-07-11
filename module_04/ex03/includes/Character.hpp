@@ -3,9 +3,9 @@
 
 #include "ICharacter.hpp"
 #include "AMateria.hpp"
+#include "constants.hpp"
 #include <string>
 
-#define MAX_TRASH 8
 
 class Character : public ICharacter
 {

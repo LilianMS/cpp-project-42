@@ -99,7 +99,7 @@ void Character::unequip(int idx)
 {
 	if (idx < 0 || idx >= 4 || !_inventory[idx])
 	{
-		std::cout << "⚠️ Nothing to unequip at slot " << idx << "\n";
+		std::cout << "⚠️  Nothing to unequip at slot " << idx << "\n";
 		return;
 	}
 
@@ -123,7 +123,7 @@ void Character::use(int idx, ICharacter &target)
 {
 	if (idx < 0 || idx >= 4 || !_inventory[idx])
 	{
-		std::cout << "⚠️ Nothing to use at slot " << idx << "\n";
+		std::cout << "⚠️  Nothing to use at slot " << idx << "\n";
 		return;
 	}
 	_inventory[idx]->use(target);

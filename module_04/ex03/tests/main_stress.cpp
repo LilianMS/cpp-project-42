@@ -13,7 +13,7 @@ int main()
 	ICharacter *dummy = new Character("🧍‍♂️ Dummy");
 
 	const int totalCasts = MAX;
-	const int unequipEvery = 7;
+	const int unequipEvery = 2;
 
 	for (int i = 0; i < totalCasts; ++i)
 	{

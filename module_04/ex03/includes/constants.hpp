@@ -1,18 +1,7 @@
+#ifndef CONSTANTS_HPP
+# define CONSTANTS_HPP
 
-#ifndef MAIN_HPP
-#define MAIN_HPP
-
-# include "colors.hpp"
-# include "IMateriaSource.hpp"
-# include "MateriaSource.hpp"
-# include "ICharacter.hpp"
-# include "Character.hpp"
-# include "Ice.hpp"
-# include "Cure.hpp"
-# include <iostream>
-# include <cstdlib>
-
-# define MAX MAX_TRASH
+# define MAX_TRASH 4
 
 # define RESET   "\033[0m"
 # define BLACK   "\033[1;30m"
