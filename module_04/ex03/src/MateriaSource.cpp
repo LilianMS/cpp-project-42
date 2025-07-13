@@ -44,7 +44,7 @@ MateriaSource::~MateriaSource()
 void MateriaSource::learnMateria(AMateria *m)
 {
 	if (!m)
-		return;
+		return ;
 	for (int i = 0; i < 4; ++i)
 	{
 		if (_slots[i] == NULL)
@@ -55,6 +55,7 @@ void MateriaSource::learnMateria(AMateria *m)
 		}
 	}
 	std::cout << "⚠️  MateriaSource full. Cannot learn more." << std::endl;
+	delete m;
 }
 
 AMateria *MateriaSource::createMateria(std::string const &type)

@@ -2,18 +2,19 @@ NAME = MateriaCraft
 
 CXX = c++
 INCLUDES = -Iincludes
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Wno-shadow $(INCLUDES)
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDES)
 DEPFLAGS = -MMD -MP
 
 BUILD_DIR = build/
 
-SRCS = src/main_exp.cpp \
+SRCS = src/main.cpp \
 	   src/AMateria.cpp \
 	   src/Ice.cpp \
 	   src/Cure.cpp \
 	   src/Character.cpp \
 	   src/MateriaSource.cpp \
-	   src/Tnt.cpp
+	   src/Tnt.cpp \
+	   src/TrashCan.cpp
 
 OBJS = $(patsubst src/%.cpp, $(BUILD_DIR)%.o, $(SRCS))
 DEPS = $(OBJS:.o=.d)

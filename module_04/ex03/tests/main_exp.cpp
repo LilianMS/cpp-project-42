@@ -1,68 +1,71 @@
 #include "main.hpp"
 
-void printStep(std::string msg) {
-    std::cout << BLUE << "\n🔹 " << msg << RESET << std::endl;
+void printStep(std::string msg)
+{
+	std::cout << BLUE << "\n🔹 " << msg << RESET << std::endl;
 }
 
 int main()
 {
-    std::cout << YELLOW << "\n✨ Bem-vindo ao MateriaCraft - cpp04/ex03\n" << RESET;
-    std::cout << CYAN << "🎓 Explorando Interfaces, Herança e Polimorfismo!\n" << RESET;
+	std::cout << YELLOW << "\n✨ Welcome to MateriaCraft - cpp04/ex03\n"
+			  << RESET;
+	std::cout << CYAN << "🎓 Exploring Interfaces, Inheritance and Polymorphism!\n"
+			  << RESET;
 
-    // Interface IMateriaSource
-    printStep("Interface 📚 IMateriaSource define a fábrica de magias.");
-    IMateriaSource *biblioteca = new MateriaSource();
-    biblioteca->learnMateria(new Ice());
-    biblioteca->learnMateria(new Cure());
-    biblioteca->learnMateria(new Tnt()); // Adiciona TNT à biblioteca
+	// Interface IMateriaSource
+	printStep("Interface 📚 IMateriaSource defines the magic factory.");
+	IMateriaSource *library = new MateriaSource();
+	library->learnMateria(new Ice());
+	library->learnMateria(new Cure());
+	library->learnMateria(new Tnt()); // Adds TNT to the library
 
-    // Interface ICharacter
-    printStep("Interface 🧙 ICharacter define personagens mágicos.");
-    ICharacter *steve = new Character("🎮 Steve");
-    ICharacter *inimigo = new Character("👾 Creeper");
+	// Interface ICharacter
+	printStep("Interface 🧙 ICharacter defines magical characters.");
+	ICharacter *steve = new Character("🎮 Steve");
+	ICharacter *enemy = new Character("👾 Creeper");
 
-    printStep("Fábrica cria magias com clone de modelos:");
-    AMateria *ice = biblioteca->createMateria("ice");
-    AMateria *cure = biblioteca->createMateria("cure");
-    AMateria *tnt = biblioteca->createMateria("tnt"); // Cria TNT
+	printStep("Factory creates magics by cloning models:");
+	AMateria *ice = library->createMateria("ice");
+	AMateria *cure = library->createMateria("cure");
+	AMateria *tnt = library->createMateria("tnt"); // Creates TNT
 
-    printStep("Personagem equipa magias:");
-    steve->equip(ice); // 0
-    steve->equip(cure); // 1
-    steve->equip(tnt); // 2
-    
-    steve->equip(biblioteca->createMateria("fire")); // Steve tenta equipar uma magia inexistente
+	printStep("Character equips magics:");
+	steve->equip(ice);	// 0
+	steve->equip(cure); // 1
+	steve->equip(tnt);	// 2
 
-    steve->equip(NULL); // Steve tenta equipar um null
+	steve->equip(library->createMateria("fire")); // Steve tries to equip a non-existent magic
 
-    steve->equip(tnt->clone()); // 3 Steve equipa mais uma TNT
-    steve->equip(tnt->clone()); // 3 Steve equipa mais uma TNT
-    steve->equip(tnt->clone()); // 3 Steve equipa mais uma TNT
-    steve->equip(tnt->clone()); // 3 Steve equipa mais uma TNT
-    steve->equip(tnt->clone()); // 3 Steve equipa mais uma TNT
-    steve->equip(tnt->clone()); // 3 Steve equipa mais uma TNT
-    steve->equip(tnt->clone()); // 3 Steve equipa mais uma TNT
-    steve->equip(tnt->clone()); // 3 Steve equipa mais uma TNT
-    
-    
-    printStep("Magias são usadas via ponteiros e polimorfismo:");
-    steve->use(0, *inimigo); // ice
-    steve->use(1, *inimigo); // cure
-    steve->use(2, *inimigo); 
-    steve->use(3, *inimigo); 
-    steve->use(4, *inimigo); 
+	steve->equip(NULL); // Steve tries to equip a null
 
-    printStep("Desequipando magias:");
-    steve->unequip(0); // Desequipa a magia do slot 0 (ice)
-    steve->unequip(1); // Desequipa a magia do slot 1 (cure)
-    steve->unequip(2); // Desequipa a magia do slot 2 (TNT)
-    steve->unequip(3); // Desequipa a magia do slot 3 (TNT)
+	steve->equip(tnt->clone()); // 3 Steve equips another TNT
+	steve->equip(tnt->clone()); // 3 Steve equips another TNT
+	steve->equip(tnt->clone()); // 3 Steve equips another TNT
+	steve->equip(tnt->clone()); // 3 Steve equips another TNT
+	steve->equip(tnt->clone()); // 3 Steve equips another TNT
+	steve->equip(tnt->clone()); // 3 Steve equips another TNT
+	steve->equip(tnt->clone()); // 3 Steve equips another TNT
+	steve->equip(tnt->clone()); // 3 Steve equips another TNT
 
-    printStep("Desmontando cenário com delete e destrutores:");
-    delete inimigo;
-    delete steve;
-    delete biblioteca;
+	printStep("Magics are used via pointers and polymorphism:");
+	steve->use(0, *enemy); // ice
+	steve->use(1, *enemy); // cure
+	steve->use(2, *enemy);
+	steve->use(3, *enemy);
+	steve->use(4, *enemy);
 
-    std::cout << GREEN << "\n✅ Fim da apresentação. Nenhum leak se tudo correu bem!\n" << RESET;
-    return 0;
+	printStep("Unequipping magics:");
+	steve->unequip(0); // Unequips the magic from slot 0 (ice)
+	steve->unequip(1); // Unequips the magic from slot 1 (cure)
+	steve->unequip(2); // Unequips the magic from slot 2 (TNT)
+	steve->unequip(3); // Unequips the magic from slot 3 (TNT)
+
+	printStep("Dismantling scenario with delete and destructors:");
+	delete enemy;
+	delete steve;
+	delete library;
+
+	std::cout << GREEN << "\n✅ End of presentation. No leaks if all went well!\n"
+			  << RESET;
+	return 0;
 }

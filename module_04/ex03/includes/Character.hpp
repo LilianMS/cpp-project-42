@@ -3,6 +3,7 @@
 
 #include "ICharacter.hpp"
 #include "AMateria.hpp"
+#include "TrashCan.hpp"
 #include "constants.hpp"
 #include <string>
 
@@ -20,13 +21,11 @@ public:
 	void equip(AMateria *m);
 	void unequip(int idx);
 	void use(int idx, ICharacter &target);
-	void _discardOne();
 
 private:
 	std::string	_name;
 	AMateria	*_inventory[4];
-	AMateria	*_trash[MAX_TRASH];
-	int			_trashCount;
+	TrashCan	_trash;
 };
 
 #endif
