@@ -29,7 +29,7 @@ fclean: clean
 re: fclean all
 
 test:
-	@echo -e "$(YELLOW)🔧 Running tests...$(RESET)"
+	@echo "$(YELLOW)🔧 Running tests...$(RESET)"
 	./test.sh
 
 .PHONY: all clean fclean re test
