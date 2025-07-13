@@ -40,6 +40,9 @@ int main()
     steve->equip(tnt->clone()); // 3 Steve equipa mais uma TNT
     steve->equip(tnt->clone()); // 3 Steve equipa mais uma TNT
     steve->equip(tnt->clone()); // 3 Steve equipa mais uma TNT
+    steve->equip(tnt->clone()); // 3 Steve equipa mais uma TNT
+    steve->equip(tnt->clone()); // 3 Steve equipa mais uma TNT
+    steve->equip(tnt->clone()); // 3 Steve equipa mais uma TNT
     
     
     printStep("Magias são usadas via ponteiros e polimorfismo:");

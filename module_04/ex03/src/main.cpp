@@ -1,7 +1,6 @@
 #include "main.hpp"
 
-// This is the main
-
+// This is the main in subject
 
 int main()
 {
