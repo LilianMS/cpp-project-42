@@ -2,11 +2,12 @@
 #include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
-#include "colors.hpp"
+#include "constants.hpp"
+
 
 int main()
 {
-	// const Animal *meta = new Animal();
+	const Animal *meta = new Animal();
 	const Animal *j = new Dog();
 	const Animal *i = new Cat();
 
@@ -14,10 +15,10 @@ int main()
 	j->makeSound();
 	std::cout << MAGENTA << "🐱 " << i->getType() << " says " << RESET;
 	i->makeSound();
-	// std::cout << ORANGE << "🐾 " << meta->getType() << " says " << RESET;
-	// meta->makeSound();
+	std::cout << ORANGE << "🐾 " << meta->getType() << " says " << RESET;
+	meta->makeSound();
 
-	// delete meta;
+	delete meta;
 	delete j;
 	delete i;
 

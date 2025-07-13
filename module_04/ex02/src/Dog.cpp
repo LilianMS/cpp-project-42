@@ -2,14 +2,14 @@
 #include <iostream>
 
 Dog::Dog()
-	: Animal(), _brain(new Brain())
+	: AAnimal(), _brain(new Brain())
 {
 	_type = "Dog";
 	std::cout << "🐶 Dog constructed" << std::endl;
 }
 
 Dog::Dog(const Dog &other)
-	: Animal(other), _brain(new Brain(*other._brain))
+	: AAnimal(other), _brain(new Brain(*other._brain))
 {
 	// _brain = new Brain(*other._brain); // deep copy
 	_type = other._type;
@@ -21,7 +21,7 @@ Dog &Dog::operator=(const Dog &other)
 	std::cout << "🐶 Dog copy-assigned" << std::endl;
 	if (this != &other)
 	{
-		Animal::operator=(other);
+		AAnimal::operator=(other);
 		if (_brain)
 			delete _brain;
 		_brain = new Brain(*other._brain); // deep copy

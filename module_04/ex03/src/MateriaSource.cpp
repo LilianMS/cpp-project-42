@@ -21,11 +21,8 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &other)
 	{
 		for (int i = 0; i < 4; ++i)
 		{
-			if (_slots[i])
-			{
-				delete _slots[i];
-				_slots[i] = NULL;
-			}
+			delete _slots[i];
+			_slots[i] = NULL;
 			if (other._slots[i])
 				_slots[i] = other._slots[i]->clone();
 		}

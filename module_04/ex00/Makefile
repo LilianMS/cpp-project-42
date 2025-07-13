@@ -1,18 +1,24 @@
+
 NAME = animals
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Wno-shadow
+INCLUDES = -Iincludes
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow $(INCLUDES)
+DEPFLAGS = -MMD -MP
 
-SRCS = main.cpp \
-		Animal.cpp \
-		Cat.cpp \
-		Dog.cpp \
-		WrongAnimal.cpp \
-		WrongCat.cpp \
+BUILD_DIR = build/
 
-OBJS = $(SRCS:.cpp=.o)
+SRCS = src/main.cpp \
+		src/Animal.cpp \
+		src/Cat.cpp \
+		src/Dog.cpp \
+		src/WrongAnimal.cpp \
+		src/WrongCat.cpp \
 
-# Colors
+OBJS = $(patsubst src/%.cpp, $(BUILD_DIR)%.o, $(SRCS))
+DEPS = $(OBJS:.o=.d)
+
+# Colors for terminal output
 RED = \033[1;31m
 GREEN = \033[1;32m
 YELLOW = \033[1;33m
@@ -20,53 +26,34 @@ BLUE = \033[1;34m
 MAGENTA = \033[1;35m
 RESET = \033[0m
 
-COLORS = colors.hpp
-
-all: $(COLORS) $(NAME)
-	@echo "Program created:  $(GREEN)🤖 ./$(NAME) $(RESET)"
+all: $(NAME)
+	@echo "\nProgram created:  $(GREEN)🐾 ./$(NAME) $(RESET)\n"
 
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
+$(BUILD_DIR)%.o: src/%.cpp
+	@mkdir -p $(dir $@)
+	$(CXX) $(CXXFLAGS) $(DEPFLAGS) -c $< -o $@
+
 clean:
-	@echo "$(RED)Cleaning object files...$(RESET)"
-	rm -f $(OBJS)
+	@echo "$(RED)🧹 Cleaning object files...$(RESET)"
+	rm -rf $(BUILD_DIR)
 
 fclean: clean
-	@echo "$(RED)Removing executable...$(RESET)"
+	@echo "$(RED)🗑️  Removing executable...$(RESET)"
 	rm -f $(NAME)
-	rm -f $(COLORS)
 
 re: fclean all
 
 test: clear re
-	@echo "$(YELLOW)Running tests with Valgrind...$(RESET)"
+	@echo "$(YELLOW)\n🧪 Running tests with Valgrind...$(RESET)"
 	valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME)
 
 clear:
 	clear
-	@echo "$(MAGENTA)Clearing terminal...$(RESET)"
+	@echo "$(MAGENTA)🧽 Clearing terminal...$(RESET)"
 
-COLORS = colors.hpp
+-include $(DEPS)
 
-$(COLORS):
-	@echo "🔧 Gerando colors.hpp..."
-	@echo "#ifndef COLORS_HPP" > $(COLORS)
-	@echo "# define COLORS_HPP" >> $(COLORS)
-	@echo "" >> $(COLORS)
-	@echo '# define RESET   "\033[0m"' >> $(COLORS)
-	@echo '# define BLACK   "\033[1;30m"' >> $(COLORS)
-	@echo '# define RED     "\033[1;31m"' >> $(COLORS)
-	@echo '# define GREEN   "\033[1;32m"' >> $(COLORS)
-	@echo '# define YELLOW  "\033[1;33m"' >> $(COLORS)
-	@echo '# define BLUE    "\033[1;34m"' >> $(COLORS)
-	@echo '# define MAGENTA "\033[1;35m"' >> $(COLORS)
-	@echo '# define CYAN    "\033[1;36m"' >> $(COLORS)
-	@echo '# define ORANGE  "\033[1;38;5;208m"' >> $(COLORS)
-	@echo '# define WHITE   "\033[1;37m"' >> $(COLORS)
-	@echo '# define UNDER   "\033[4m"' >> $(COLORS)
-	@echo "" >> $(COLORS)
-	@echo "#endif" >> $(COLORS)
-	@echo "✅ colors.hpp criado."
-
-.PHONY: all clean fclean re test
+.PHONY: all clean fclean re test clear

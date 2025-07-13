@@ -2,7 +2,7 @@ NAME = MateriaCraft
 
 CXX = c++
 INCLUDES = -Iincludes
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDES)
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow $(INCLUDES)
 DEPFLAGS = -MMD -MP
 
 BUILD_DIR = build/
@@ -28,7 +28,7 @@ MAGENTA = \033[1;35m
 RESET = \033[0m
 
 all: $(NAME)
-	@echo "Program created:  $(GREEN)🎮 ./$(NAME) $(RESET)"
+	@echo "\nProgram created:  $(GREEN)🎮 ./$(NAME) $(RESET)"
 
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
@@ -42,7 +42,7 @@ clean:
 	rm -rf $(BUILD_DIR)
 
 fclean: clean
-	@echo "$(RED)🗑️ Removing executable...$(RESET)"
+	@echo "$(RED)🗑️  Removing executable...$(RESET)"
 	rm -f $(NAME)
 
 re: fclean all

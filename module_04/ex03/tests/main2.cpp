@@ -49,5 +49,5 @@ int main()
 
 	std::cout << GREEN << "✅ All materias and characters were correctly destroyed.\n"
 			  << RESET;
-	return 0;
+	return (0);
 }
