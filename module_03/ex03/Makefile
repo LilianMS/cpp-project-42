@@ -1,4 +1,4 @@
-NAME = fragtrap
+NAME = diamondTrap
 
 CXX = c++
 INCLUDES = -Iincludes
@@ -11,6 +11,7 @@ SRCS = src/main.cpp \
 		src/ClapTrap.cpp \
 		src/ScavTrap.cpp \
 		src/FragTrap.cpp \
+		src/DiamondTrap.cpp \
 
 OBJS = $(patsubst src/%.cpp, $(BUILD_DIR)%.o, $(SRCS))
 DEPS = $(OBJS:.o=.d)
