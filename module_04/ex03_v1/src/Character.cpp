@@ -79,20 +79,20 @@ void Character::equip(AMateria *m)
 			_inventory[i] = m;
 			std::cout << "🧍 " << _name << " equips " << m->getType()
 					  << " in slot " << i << "\n";
-			return ;
+			return;
 		}
 	}
-	// if (_trashCount < MAX_TRASH)
-	// {
-	// 	_trash[_trashCount++] = m;
-	// 	std::cout << "🗑️ " << _name << "'s inventory is full. Discarded "
-	// 			  << m->getType() << "\n";
-	// }
-	// else
-	// {
+	if (_trashCount < MAX_TRASH)
+	{
+		_trash[_trashCount++] = m;
+		std::cout << "🗑️ " << _name << "'s inventory is full. Discarded "
+				  << m->getType() << "\n";
+	}
+	else
+	{
 		std::cout << "💥 No space to store materia. Deleting " << m->getType() << "\n";
 		delete m;
-	// }
+	}
 }
 
 void Character::unequip(int idx)
@@ -100,25 +100,20 @@ void Character::unequip(int idx)
 	if (idx < 0 || idx >= 4 || !_inventory[idx])
 	{
 		std::cout << "⚠️  Nothing to unequip at slot " << idx << "\n";
-		return ;
+		return;
 	}
-	else if (_trashCount < MAX_TRASH)
-	{
-		// AMateria *unequipped = _inventory[idx];
-		// _inventory[idx] = NULL;
-		// _trash[_trashCount++] = unequipped;
-		std::cout << "🧍 " << _name << " unequipped " << _inventory[idx]->getType()
-				  << " from slot " << idx << "\n";
-		_trash[_trashCount++] = _inventory[idx];
-		_inventory[idx] = NULL;
 
-		// std::cout << "🧍 " << _name << " unequipped " << unequipped->getType()
-		// 		  << " from slot " << idx << "\n";
+	if (_trashCount < MAX_TRASH)
+	{
+		AMateria *unequipped = _inventory[idx];
+		_inventory[idx] = NULL;
+		_trash[_trashCount++] = unequipped;
+		std::cout << "🧍 " << _name << " unequipped " << unequipped->getType()
+				  << " from slot " << idx << "\n";
 	}
 	else
 	{
-
-		std::cout << "💥 --------------------Lixeira cheia! Losing unequipped materia from slot "
+		std::cout << "💥 Lixeira cheia! Losing unequipped materia from slot "
 				  << idx << "\n";
 		_inventory[idx] = NULL;
 	}

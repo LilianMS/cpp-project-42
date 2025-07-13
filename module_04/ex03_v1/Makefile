@@ -7,7 +7,7 @@ DEPFLAGS = -MMD -MP
 
 BUILD_DIR = build/
 
-SRCS = src/main_stress.cpp \
+SRCS = src/main.cpp \
 	   src/AMateria.cpp \
 	   src/Ice.cpp \
 	   src/Cure.cpp \

@@ -12,17 +12,14 @@ int main()
 	ICharacter *player = new Character("🧪 StressBot");
 	ICharacter *dummy = new Character("🧍 Dummy");
 
-	const int totalCasts = 1000;
+	const int totalCasts = MAX;
 	const int unequipEvery = 2;
 
-	AMateria *m;
-
-	// for (int i = 0; i < totalCasts && totalCasts + unequipEvery < MAX_TRASH; ++i)
 	for (int i = 0; i < totalCasts; ++i)
 	{
 		// Alterna entre ice e cure
 		std::string tipo = (i % 2 == 0) ? "ice" : "cure";
-		m = biblioteca->createMateria(tipo);
+		AMateria *m = biblioteca->createMateria(tipo);
 		player->equip(m);
 
 		// Usa magia no dummy
@@ -39,6 +36,7 @@ int main()
 
 	std::cout << GREEN << "\n🧹 Encerrando e limpando recursos...\n"
 			  << RESET;
+
 	delete dummy;
 	delete player;
 	delete biblioteca;
