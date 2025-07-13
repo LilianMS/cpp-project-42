@@ -7,7 +7,7 @@ DEPFLAGS = -MMD -MP
 
 BUILD_DIR = build/
 
-SRCS = src/main_stress.cpp \
+SRCS = src/main_exp.cpp \
 	   src/AMateria.cpp \
 	   src/Ice.cpp \
 	   src/Cure.cpp \
@@ -18,7 +18,7 @@ SRCS = src/main_stress.cpp \
 OBJS = $(patsubst src/%.cpp, $(BUILD_DIR)%.o, $(SRCS))
 DEPS = $(OBJS:.o=.d)
 
-# 🎨 Cores
+# Colors for terminal output
 RED = \033[1;31m
 GREEN = \033[1;32m
 YELLOW = \033[1;33m
@@ -47,7 +47,7 @@ fclean: clean
 re: fclean all
 
 test: clear re
-	@echo "$(YELLOW)🧪 Running tests with Valgrind...$(RESET)"
+	@echo "$(YELLOW)\n🧪 Running tests with Valgrind...$(RESET)"
 	valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME)
 
 clear:
