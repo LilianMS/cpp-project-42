@@ -2,12 +2,13 @@
 #include <fstream>
 #include <iostream>
 
-Replace::Replace(const std::string& filename, const std::string& s1, const std::string& s2)
+Replace::Replace(const std::string &filename, const std::string &s1, const std::string &s2)
 	: _filename(filename), _s1(s1), _s2(s2) {}
 
 Replace::~Replace() {}
 
-void Replace::process() {
+void Replace::process()
+{
 	std::string content = readFile();
 	if (content.empty())
 		return ;
@@ -16,9 +17,11 @@ void Replace::process() {
 	writeFile(newContent);
 }
 
-std::string Replace::readFile() {
+std::string Replace::readFile()
+{
 	std::ifstream inFile(_filename.c_str());
-	if (!inFile) {
+	if (!inFile)
+	{
 		std::cerr << "❌ Error: could not open file " << _filename << std::endl;
 		return ("");
 	}
@@ -28,11 +31,13 @@ std::string Replace::readFile() {
 	return (content);
 }
 
-std::string Replace::replaceString(const std::string& content) {
+std::string Replace::replaceString(const std::string &content)
+{
 	std::string result;
 	size_t pos = 0, found;
 
-	while ((found = content.find(_s1, pos)) != std::string::npos) {
+	while ((found = content.find(_s1, pos)) != std::string::npos)
+	{
 		result += content.substr(pos, found - pos);
 		result += _s2;
 		pos = found + _s1.length();
@@ -41,11 +46,13 @@ std::string Replace::replaceString(const std::string& content) {
 	return (result);
 }
 
-void Replace::writeFile(const std::string& newContent) {
+void Replace::writeFile(const std::string &newContent)
+{
 	std::ofstream outFile((_filename + ".replace").c_str());
-	if (!outFile) {
+	if (!outFile)
+	{
 		std::cerr << "❌ Error: could not create output file." << std::endl;
-		return ;
+		return;
 	}
 	outFile << newContent;
 	outFile.close();
