@@ -16,7 +16,7 @@ MAGENTA = \033[1;35m
 RESET = \033[0m
 
 all: $(NAME)
-	@echo "Program created:  $(GREEN) 🧠 ./$(NAME) $(RESET)"
+	@echo "Program created: $(GREEN)🧠 ./$(NAME) $(RESET)"
 
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
