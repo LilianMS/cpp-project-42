@@ -1,7 +1,9 @@
 *.o
 *.a
-megaphone
+*.d
+build
 .vscode
+megaphone
 phonebook
 account_test
 zombie

@@ -3,6 +3,7 @@
 
 #include "ICharacter.hpp"
 #include "AMateria.hpp"
+#include "TrashCan.hpp"
 #include "constants.hpp"
 #include <string>
 
@@ -24,8 +25,7 @@ public:
 private:
 	std::string	_name;
 	AMateria	*_inventory[4];
-	AMateria	*_trash[MAX_TRASH];
-	int			_trashCount;
+	TrashCan	_trash;
 };
 
 #endif

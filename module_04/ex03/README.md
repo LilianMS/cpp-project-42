@@ -1,37 +1,34 @@
-
-📚 MateriaSource → fábrica de magias
-🧙‍♂️ Character		→ personagem que aprende e usa magias
-✨ Ice / Cure	→ as magias concretas
-
+📚 MateriaSource → magic factory
+🧙‍♂️ Character     → character who learns and uses magic
+✨ Ice / Cure    → the concrete spells
 
 
-
-       +-------------------+
-       |   IMateriaSource  |
-       +-------------------+
-                ▲
-                |
-       +-------------------+
-       |   MateriaSource   |
-       +-------------------+
-             |
-             | learns
-             v
+     +-------------------+
+     |   IMateriaSource  |
+     +-------------------+
+              ▲
+              |
+     +-------------------+
+     |   MateriaSource   |
+     +-------------------+
+              |
+              | learns
+              v
        +--------------+
-       |   AMateria   |<--------------+
-       +--------------+               |
-       ^             ^                |
-    Ice           Cure         <- clone creates these
+       |   AMateria   |<----------------+
+       +--------------+                 |
+       ^              ^                  |
+     Ice             Cure     <- clone creates these
        \             /
         \           /
          v         v
-     ICharacter (interface)
-            ▲
-            |
-     +--------------+
-     |  Character   |
-     +--------------+
-          |
-          | equip/use
-          v
-      AMateria*
+    ICharacter (interface)
+              ▲
+              |
+       +--------------+
+       |  Character   |
+       +--------------+
+              |
+              | equip/use
+              v
+          AMateria*

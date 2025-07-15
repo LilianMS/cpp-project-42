@@ -1,22 +1,18 @@
 #include "Character.hpp"
 #include <iostream>
 
-Character::Character(std::string const &name) : _name(name), _trashCount(0)
+Character::Character(std::string const &name) : _name(name)
 {
 	for (int i = 0; i < 4; ++i)
 		_inventory[i] = NULL;
-	for (int i = 0; i < MAX_TRASH; ++i)
-		_trash[i] = NULL;
-	std::cout << "🧍 Character \"" << _name << "\" constructed\n";
+	std::cout << "🧍 Character \"" << _name << "\" constructed" << std::endl;
 }
 
-Character::Character(const Character &other) : _name(other._name), _trashCount(0)
+Character::Character(const Character &other) : _name(other._name)
 {
 	for (int i = 0; i < 4; ++i)
 		_inventory[i] = other._inventory[i] ? other._inventory[i]->clone() : NULL;
-	for (int i = 0; i < MAX_TRASH; ++i)
-		_trash[i] = NULL;
-	std::cout << "🧍 Character \"" << _name << "\" copy-constructed\n";
+	std::cout << "🧍 Character \"" << _name << "\" copy-constructed" << std::endl;
 }
 
 Character &Character::operator=(const Character &other)
@@ -24,7 +20,6 @@ Character &Character::operator=(const Character &other)
 	if (this != &other)
 	{
 		_name = other._name;
-
 		for (int i = 0; i < 4; ++i)
 		{
 			if (_inventory[i])
@@ -34,15 +29,8 @@ Character &Character::operator=(const Character &other)
 			}
 			_inventory[i] = other._inventory[i] ? other._inventory[i]->clone() : NULL;
 		}
-
-		for (int i = 0; i < _trashCount; ++i)
-		{
-			delete _trash[i];
-			_trash[i] = NULL;
-		}
-		_trashCount = 0;
 	}
-	std::cout << "🧍 Character \"" << _name << "\" assigned\n";
+	std::cout << "🧍 Character \"" << _name << "\" assigned" << std::endl;
 	return (*this);
 }
 
@@ -50,17 +38,13 @@ Character::~Character()
 {
 	for (int i = 0; i < 4; ++i)
 	{
-		delete _inventory[i];
-		_inventory[i] = NULL;
+		if (_inventory[i])
+		{
+			delete _inventory[i];
+			_inventory[i] = NULL;
+		}
 	}
-
-	for (int i = 0; i < _trashCount; ++i)
-	{
-		delete _trash[i];
-		_trash[i] = NULL;
-	}
-
-	std::cout << "🧍 Character \"" << _name << "\" destroyed\n";
+	std::cout << "🧍 Character \"" << _name << "\" destroyed" << std::endl;
 }
 
 std::string const &Character::getName() const
@@ -71,59 +55,40 @@ std::string const &Character::getName() const
 void Character::equip(AMateria *m)
 {
 	if (!m)
-		return;
+		return ;
 	for (int i = 0; i < 4; ++i)
 	{
 		if (_inventory[i] == NULL)
 		{
 			_inventory[i] = m;
 			std::cout << "🧍 " << _name << " equips " << m->getType()
-					  << " in slot " << i << "\n";
-			return;
+					  << " in slot " << i << std::endl;
+			return ;
 		}
 	}
-	if (_trashCount < MAX_TRASH)
-	{
-		_trash[_trashCount++] = m;
-		std::cout << "🗑️ " << _name << "'s inventory is full. Discarded "
-				  << m->getType() << "\n";
-	}
-	else
-	{
-		std::cout << "💥 No space to store materia. Deleting " << m->getType() << "\n";
-		delete m;
-	}
+	std::cout << "🗑️  " << _name << "'s inventory is full. Discarded "
+			  << m->getType() << std::endl;
+	delete m;
 }
 
 void Character::unequip(int idx)
 {
 	if (idx < 0 || idx >= 4 || !_inventory[idx])
 	{
-		std::cout << "⚠️  Nothing to unequip at slot " << idx << "\n";
+		std::cout << "⚠️  Nothing to unequip at slot " << idx << std::endl;
 		return;
 	}
-
-	if (_trashCount < MAX_TRASH)
-	{
-		AMateria *unequipped = _inventory[idx];
-		_inventory[idx] = NULL;
-		_trash[_trashCount++] = unequipped;
-		std::cout << "🧍 " << _name << " unequipped " << unequipped->getType()
-				  << " from slot " << idx << "\n";
-	}
-	else
-	{
-		std::cout << "💥 Lixeira cheia! Losing unequipped materia from slot "
-				  << idx << "\n";
-		_inventory[idx] = NULL;
-	}
+	_trash.store(_inventory[idx]);
+	std::cout << std::endl << "🧍 " << _name << " unequipped " << _inventory[idx]->getType()
+			<< " from slot " << idx << std::endl;
+	_inventory[idx] = NULL;
 }
 
 void Character::use(int idx, ICharacter &target)
 {
 	if (idx < 0 || idx >= 4 || !_inventory[idx])
 	{
-		std::cout << "⚠️  Nothing to use at slot " << idx << "\n";
+		std::cout << "⚠️  Nothing to use at slot " << idx << std::endl;
 		return;
 	}
 	_inventory[idx]->use(target);

@@ -13,6 +13,5 @@
 # include <iostream>
 # include <cstdlib>
 
-# define MAX (MAX_TRASH / 2)
 
 #endif

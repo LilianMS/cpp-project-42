@@ -1,7 +1,7 @@
 #ifndef CONSTANTS_HPP
 # define CONSTANTS_HPP
 
-# define MAX_TRASH 100
+# define MAX_TRASH 4
 
 # define RESET   "\033[0m"
 # define BLACK   "\033[1;30m"
