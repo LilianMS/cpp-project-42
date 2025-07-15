@@ -29,11 +29,12 @@ clean:
 fclean: clean
 	@echo "$(RED)Removing executable...$(RESET)"
 	rm -f $(NAME)
+	rm -f *.replace
 
 re: fclean all
 
 test: re
 	@echo "$(YELLOW)Running tests with Valgrind...$(RESET)"
-	valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME)
+	valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) Makefile clear clean
 
 .PHONY: all clean fclean re test
