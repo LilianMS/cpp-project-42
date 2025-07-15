@@ -17,15 +17,14 @@ int main()
 	PhoneBook	phoneBook;
 	std::string	command;
 
-	std::cout << "\n📞 Welcome to My Awesome PhoneBook!\n" << std::endl;
-
+	std::cout << "\n 📞 Welcome to My Awesome PhoneBook!\n" << std::endl;
 	while (true)
 	{
-		std::cout << "Enter command (ADD, SEARCH, EXIT): ";
+		std::cout << " [MyPhoneBook] > Enter command (ADD, SEARCH, EXIT): ";
 
 		if (!std::getline(std::cin, command))
 		{
-			std::cout << "\n👋 EOF received. Exiting program." << std::endl;
+			std::cout << "\n > [!] EOF received. Exiting program [!]" << std::endl;
 			break ;
 		}
 		if (command == "ADD")
@@ -35,9 +34,8 @@ int main()
 		else if (command == "EXIT")
 			break ;
 		else
-			std::cout << "❓ Unknown command.\n";
+			std::cout << " > [!] Unknown command [!]\n";
 	}
-
-	std::cout << "👋 Bye!\n";
+	std::cout << " [MyPhoneBook] > 👋 Bye!\n";
 	return (0);
 }

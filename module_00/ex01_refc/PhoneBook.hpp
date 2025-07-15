@@ -20,7 +20,7 @@ class PhoneBook
 
 		void		printTable() const;
 		void		printContact(int index) const;
-		int			check_input_data(const std::string &input, const std::string &prompt) const;
+		int			check_data_input(const std::string &input, const std::string &prompt) const;
 		std::string	promptInput(const std::string &prompt) const;
 };
 
