@@ -9,11 +9,12 @@ class Megaphone
 	public:
 		Megaphone();
 		~Megaphone();
-		void project(int argc, char **argv) const;
+		
+		void	project(int argc, char **argv) const;
 
 	private:
-		void toUpperCase(std::string &str) const;
-		void noArg() const;
+		void	toUpperCase(std::string &str) const;
+		void	noArg() const;
 };
 
 #endif
