@@ -25,8 +25,14 @@ std::string Replace::readFile()
 		std::cerr << "❌ Error: could not open file " << _filename << std::endl;
 		return ("");
 	}
-
-	std::string content((std::istreambuf_iterator<char>(inFile)), std::istreambuf_iterator<char>());
+	std::string content;
+	std::string line;
+	while (std::getline(inFile, line))
+	{
+		content += line;
+		if (!inFile.eof())
+			content += "\n";
+	}
 	inFile.close();
 	return (content);
 }
