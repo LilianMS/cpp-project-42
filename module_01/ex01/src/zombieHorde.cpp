@@ -12,20 +12,8 @@ Zombie *zombieHorde(int N, std::string name)
 	for (int i = 0; i < N; ++i)
 	{
 		std::ostringstream oss;
-		oss << "\"" << name << " " << i << "\"";
+		oss << name << " " << i;
 		horde[i].setName(oss.str());
 	}
 	return (horde);
 }
-
-// Zombie* zombieHorde(int N, std::string name) {
-//     if (N <= 0)
-//         return NULL;
-
-//     Zombie* horde = new Zombie[N];
-
-//     for (int i = 0; i < N; ++i)
-//         horde[i].setName(name);
-
-//     return horde;
-// }

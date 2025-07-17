@@ -9,10 +9,14 @@ Replace::~Replace() {}
 
 void Replace::process()
 {
+	if (_s1.empty() || _s2.empty())
+	{
+		std::cerr << "❌ Error: s1 and s2 cannot be empty." << std::endl;
+		return ;
+	}
 	std::string content = readFile();
 	if (content.empty())
 		return ;
-
 	std::string newContent = replaceString(content);
 	writeFile(newContent);
 }
@@ -40,7 +44,8 @@ std::string Replace::readFile()
 std::string Replace::replaceString(const std::string &content)
 {
 	std::string result;
-	size_t pos = 0, found;
+	size_t pos = 0;
+	size_t found;
 
 	while ((found = content.find(_s1, pos)) != std::string::npos)
 	{
