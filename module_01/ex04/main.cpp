@@ -10,7 +10,9 @@ int main(int argc, char **argv)
 	}
 
 	Replace replacer(argv[1], argv[2], argv[3]);
-	replacer.process();
+
+	if (!replacer.process())
+		return (1);
 
 	return (0);
 }

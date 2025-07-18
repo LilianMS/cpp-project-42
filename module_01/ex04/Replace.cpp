@@ -7,29 +7,30 @@ Replace::Replace(const std::string &filename, const std::string &s1, const std::
 
 Replace::~Replace() {}
 
-void Replace::process()
+bool Replace::process()
 {
 	if (_s1.empty() || _s2.empty())
 	{
-		std::cerr << "❌ Error: s1 and s2 cannot be empty." << std::endl;
-		return ;
+		std::cerr << "Error: file, s1 and s2 cannot be empty." << std::endl;
+		return (false);
 	}
-	std::string content = readFile();
+	std::string content;
+	if (!readFile(content))
+		return (false);
 	if (content.empty())
-		return ;
+		std::cout << "[!] file " << _filename << " is empty." << std::endl;
 	std::string newContent = replaceString(content);
-	writeFile(newContent);
+	return (writeFile(newContent));
 }
 
-std::string Replace::readFile()
+bool Replace::readFile(std::string &content)
 {
 	std::ifstream inFile(_filename.c_str());
 	if (!inFile)
 	{
-		std::cerr << "❌ Error: could not open file " << _filename << std::endl;
-		return ("");
+		std::cerr << "Error: could not open file " << _filename << std::endl;
+		return (false);
 	}
-	std::string content;
 	std::string line;
 	while (std::getline(inFile, line))
 	{
@@ -38,7 +39,7 @@ std::string Replace::readFile()
 			content += "\n";
 	}
 	inFile.close();
-	return (content);
+	return (true);
 }
 
 std::string Replace::replaceString(const std::string &content)
@@ -57,14 +58,17 @@ std::string Replace::replaceString(const std::string &content)
 	return (result);
 }
 
-void Replace::writeFile(const std::string &newContent)
+bool Replace::writeFile(const std::string &newContent)
 {
-	std::ofstream outFile((_filename + ".replace").c_str());
+	std::string outFileName = _filename + ".replace";
+	std::ofstream outFile(outFileName.c_str());
 	if (!outFile)
 	{
-		std::cerr << "❌ Error: could not create output file." << std::endl;
-		return;
+		std::cerr << "Error: could not create output file "
+				  << outFileName << std::endl;
+		return (false);
 	}
 	outFile << newContent;
 	outFile.close();
+	return (true);
 }

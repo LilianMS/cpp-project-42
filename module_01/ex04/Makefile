@@ -34,7 +34,6 @@ fclean: clean
 re: fclean all
 
 test: re
-	@echo "$(YELLOW)Running tests with Valgrind...$(RESET)"
-	valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) Makefile clear clean
+	./test.sh
 
 .PHONY: all clean fclean re test
