@@ -34,6 +34,6 @@ re: fclean all
 
 test: re
 	@echo "$(YELLOW)Running tests with Valgrind...$(RESET)"
-	valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) DEBUG
+	valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) INFO
 
 .PHONY: all clean fclean re test

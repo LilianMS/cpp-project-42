@@ -33,30 +33,25 @@ void Harl::complain(std::string level)
 		if (level == levels[i])
 		{
 			index = i;
-			break;
+			break ;
 		}
 	}
 
 	switch (index)
 	{
 	case 0:
-		goto debug_label;
+		debug();
+		// fallthrough
 	case 1:
-		goto info_label;
+		info();
+		// fallthrough
 	case 2:
-		goto warning_label;
+		warning();
+		// fallthrough
 	case 3:
-		goto error_label;
+		error();
+		break;
 	default:
 		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-		return ;
 	}
-	debug_label:
-		debug();
-	info_label:
-		info();
-	warning_label:
-		warning();
-	error_label:
-		error();
 }
